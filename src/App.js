@@ -9,14 +9,24 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import MainRoutes from './routes'
 import { API } from './api'
 import { app } from './firebase'
+import { useAuth } from './providers/useAuth'
 
 axios.defaults.baseURL = 'https://salymbekov-social-default-rtdb.asia-southeast1.firebasedatabase.app'
 
 export const storage = getStorage(app);
 
 
+
 function App() {
   const path = useLocation().pathname
+
+  const navigate = useNavigate()
+
+  const { users } = useAuth()
+
+  React.useEffect(() => {
+    !users && navigate('/login/')
+  }, [users, navigate])
 
   return (
     <div>

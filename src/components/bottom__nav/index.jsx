@@ -2,9 +2,12 @@ import React from 'react'
 import c from './nav.module.scss'
 import { NavList } from '../../utils'
 import { Link, useLocation } from 'react-router-dom'
+import { useAuth } from '../../providers/useAuth'
 
 const BottomNav = () => {
   const path = useLocation().pathname
+
+  const { users } = useAuth()
 
   return (
     <div className={c.nav}>
@@ -25,7 +28,7 @@ const BottomNav = () => {
       <li>
         <Link to={'/profile/'}>
           <img  
-            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" 
+            src={users?.photo}
             alt="profile"
             className={c.profile}
           />
