@@ -1,13 +1,28 @@
 import React from 'react'
 import c from './mainPosts.module.scss'
 import PostCard from './post__card'
+import { API } from '../../api'
 
 const MainPosts = () => {
   const [ active, setActive ] = React.useState('Все')
+  const [ posts, setPosts ] = React.useState(null)
+
+  React.useEffect(() => {
+    API.getPosts()
+      .then(res => {
+        const result = Object.entries(res.data).map(([id, item]) => {
+          return {
+            id, 
+            ...item
+          }
+        })
+        setPosts(result.reverse());
+      })
+  }, [])
 
   return (
     <div className={c.mainPosts}>
-      <div className={c.categories}>
+      {/* <div className={c.categories}>
         <li
           className={active === 'Все' ? c.active : null}
           onClick={() => setActive('Все')}
@@ -20,14 +35,18 @@ const MainPosts = () => {
         >
           Подписки
         </li>
-      </div>
+      </div> */}
       <div className={c.posts}>
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {
+          !posts || posts?.length !== 0 ? 
+          posts?.map((item, i) => (
+            <PostCard 
+              key={i}
+              item={item}
+            />
+          )) :
+          <h3>Пусто!</h3>
+        }
       </div>
     </div>
   )

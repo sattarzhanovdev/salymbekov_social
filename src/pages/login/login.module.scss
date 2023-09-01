@@ -1,0 +1,35 @@
+.login{
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  img{
+    width: 80px;
+    margin-bottom: 20px;
+  }
+
+  button{
+    height: 56px;
+    width: 300px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #0000C4;
+    border: 0;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    img{
+      width: 20px;
+      display: flex; 
+      align-items: center;
+      margin: 0;
+      margin-left: 10px;
+    }
+  }
+}
