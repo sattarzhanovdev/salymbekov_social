@@ -14,11 +14,14 @@
   .posts{
     width: 100%;
     margin-top: 26px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     h3{
-      margin-left: 10px;
+      margin-left: 20px;
+    }
+    .cards{
+      display: flex;
+      align-items: center;
+      margin: 20px;
+      
     }
   }
 }

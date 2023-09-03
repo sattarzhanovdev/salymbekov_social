@@ -38,16 +38,18 @@ const Profile = () => {
       
       <div className={c.posts}>
         <h3>Публикации</h3>
-        {
-          !end || end?.length !== 0 ?
-          posts?.map((item, i) => (
-            <PostCard 
-              key={i}
-              item={item}
-            />
-          )) :
-          <h3>Ничего нет!</h3>
-        }
+        <div className={c.cards}>
+          {
+            !end || end?.length !== 0 ?
+            posts?.map((item, i) => (
+              <PostCard 
+                key={i}
+                item={item}
+              />
+            )) :
+            <h3>Ничего нет!</h3>
+          }
+        </div>
       </div>
     </div>
   )
