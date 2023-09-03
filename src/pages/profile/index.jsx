@@ -18,12 +18,11 @@ const Profile = () => {
               ...item
             }
           })
-        setPosts(result.reverse())
+        setPosts(result?.filter(item => item.userId === users?.id))
         
       })
     }, [])
     
-  const end = posts?.filter(item => item.userId === users?.id)
   return (
     <div className={c.profile}>
       <div className={c.info}>
@@ -40,7 +39,7 @@ const Profile = () => {
         <h3>Публикации</h3>
         <div className={c.cards}>
           {
-            !end || end?.length !== 0 ?
+            !posts || posts?.length !== 0 ?
             posts?.map((item, i) => (
               <PostCard 
                 key={i}
